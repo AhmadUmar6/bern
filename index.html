@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hey Bernadette 💖</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(140deg, #ff6fb1 0%, #ff8fd1 40%, #ffb3e6 70%, #ffd1f1 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-weight: 400;
+        }
+
+        .page {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+            animation: fadeIn 0.5s ease-in-out;
+            max-width: 600px;
+        }
+
+        .page.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .title {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.5rem;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(199, 91, 122, 0.35);
+            line-height: 1.4;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .kitty-gif {
+            width: 200px;
+            height: auto;
+            margin: 20px 0;
+            image-rendering: pixelated;
+        }
+
+        .btn {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            font-size: 1.3rem;
+            padding: 15px 50px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        .btn-pink {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            box-shadow: 0 8px 25px rgba(240, 147, 251, 0.4);
+        }
+
+        .btn-pink:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(240, 147, 251, 0.5);
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+            color: white;
+            box-shadow: 0 8px 25px rgba(86, 171, 47, 0.4);
+            transition: all 0.2s ease;
+            transform-origin: center;
+        }
+
+        .btn-yes:hover {
+            box-shadow: 0 12px 30px rgba(86, 171, 47, 0.5);
+        }
+
+        .btn-no {
+            background: linear-gradient(135deg, #cb2d3e 0%, #ef473a 100%);
+            color: white;
+            box-shadow: 0 8px 25px rgba(203, 45, 62, 0.4);
+        }
+
+        .btn-no:hover {
+            transform: translateY(-3px);
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Floating hearts background */
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            animation: floatHeart 6s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes floatHeart {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Confetti for page 3 */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 20px;
+            animation: confettiFall 4s ease-in-out infinite;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-100%) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0.8; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .bounce {
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        .page-content {
+            position: relative;
+            z-index: 5;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .pulse {
+            animation: pulse 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-bg" id="heartsBg"></div>
+
+    <!-- Page 1 -->
+    <div class="page active" id="page1">
+        <div class="page-content">
+            <img src="./assets/kitty-1.gif?v=4" alt="Hello Kitty" class="kitty-gif bounce">
+            <h1 class="title">Hey Bernadette, I think we should totally hangout on Feb 14 (just a random Saturday) and dress up cute and go to a fancy dinner and take lots of photos (for the memories obv)</h1>
+            <button class="btn btn-pink" onclick="goToPage(2)">Sounds fun? 💕</button>
+        </div>
+    </div>
+
+    <!-- Page 2 -->
+    <div class="page" id="page2">
+        <div class="page-content">
+            <img src="./assets/kitty-2.gif?v=3" alt="Hello Kitty Love" class="kitty-gif bounce">
+            <h1 class="title">Okay no serious question, Will you be my Valentine 👉👈?</h1>
+            <div class="buttons-container">
+                <button class="btn btn-yes" id="yesBtn" onclick="sayYes()">Yes 💖</button>
+                <button class="btn btn-no" id="noBtn" onclick="growYesButton()">No 💔</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 3 -->
+    <div class="page" id="page3">
+        <div class="confetti-container" id="confettiContainer"></div>
+        <div class="page-content">
+            <img src="./assets/kitty-3.gif?v=4" alt="Hello Kitty Couple" class="kitty-gif bounce">
+            <h1 class="title">Ok yayyy!!! text me for deets 💖</h1>
+            <div style="font-size: 3rem; margin-top: 20px;">💕💕💕</div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createHearts() {
+            const container = document.getElementById('heartsBg');
+            const hearts = ['💕', '💗', '💖', '💝', '🩷', '🤍'];
+            
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('span');
+                heart.className = 'heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 6 + 's';
+                heart.style.animationDuration = (4 + Math.random() * 4) + 's';
+                container.appendChild(heart);
+            }
+        }
+
+        // Create confetti
+        function createConfetti() {
+            const container = document.getElementById('confettiContainer');
+            const colors = ['#ff6b6b', '#ffd93d', '#6bcb77', '#4d96ff', '#ff6fff', '#a66cff'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 4 + 's';
+                confetti.style.animationDuration = (3 + Math.random() * 2) + 's';
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                container.appendChild(confetti);
+            }
+        }
+
+        // Page navigation
+        function goToPage(pageNum) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('page' + pageNum).classList.add('active');
+            
+            if (pageNum === 3) {
+                createConfetti();
+            }
+        }
+
+        // Yes button scale tracker
+        let yesScale = 1;
+
+        // Grow yes button when no is clicked
+        function growYesButton() {
+            const yesBtn = document.getElementById('yesBtn');
+            const noBtn = document.getElementById('noBtn');
+            
+            yesScale += 0.18;
+            yesBtn.style.transform = `scale(${yesScale})`;
+            yesBtn.classList.add('pulse');
+            
+            setTimeout(() => {
+                yesBtn.classList.remove('pulse');
+            }, 500);
+
+            // Make no button smaller
+            const currentNoScale = parseFloat(noBtn.style.transform?.replace('scale(', '').replace(')', '') || 1);
+            const newNoScale = Math.max(0.5, currentNoScale - 0.1);
+            noBtn.style.transform = `scale(${newNoScale})`;
+
+            // After a few clicks, change no button text
+            if (yesScale > 2) {
+                noBtn.textContent = "Are you sure? 🥺";
+            }
+            if (yesScale > 2.5) {
+                noBtn.textContent = "Please? 🥹";
+            }
+            if (yesScale > 3) {
+                noBtn.textContent = "Pretty please? 💕";
+            }
+        }
+
+        // When yes is clicked
+        function sayYes() {
+            goToPage(3);
+        }
+
+        // Initialize
+        createHearts();
+    </script>
+</body>
+</html>
