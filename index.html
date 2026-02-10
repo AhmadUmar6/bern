@@ -23,6 +23,7 @@
             align-items: center;
             overflow: hidden;
             font-weight: 400;
+            padding: 20px;
         }
 
         .page {
@@ -34,6 +35,7 @@
             padding: 40px;
             animation: fadeIn 0.5s ease-in-out;
             max-width: 600px;
+            width: 100%;
         }
 
         .page.active {
@@ -113,6 +115,48 @@
             margin-top: 30px;
             flex-wrap: wrap;
             justify-content: center;
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 12px;
+            }
+
+            .page {
+                padding: 22px 16px;
+            }
+
+            .title {
+                font-size: 1.7rem;
+                line-height: 1.35;
+                margin-bottom: 20px;
+            }
+
+            .kitty-gif {
+                width: 150px;
+                margin: 14px 0;
+            }
+
+            .btn {
+                font-size: 1rem;
+                padding: 12px 28px;
+                margin: 6px;
+            }
+
+            .buttons-container {
+                gap: 12px;
+                margin-top: 18px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .title {
+                font-size: 1.5rem;
+            }
+
+            .kitty-gif {
+                width: 130px;
+            }
         }
 
         /* Floating hearts background */
